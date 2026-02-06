@@ -42,6 +42,10 @@ struct HistoryListView: View {
                                     Text("\(completedSets)/\(session.sets.count) sets completed")
                                         .font(.caption)
                                         .foregroundColor(.secondary)
+
+                                        Text("\(session.totalSetsCount) sets · \(session.totalRepsCount) reps · \(session.totalVolume, specifier: "%.0f") kg")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
                                 }
                             }
                         }
@@ -72,5 +76,19 @@ struct HistoryListView: View {
         for index in offsets {
             dataStore.deleteSession(sessions[index])
         }
+    }
+}
+
+private extension WorkoutSession {
+    var totalSetsCount: Int {
+        sets.count
+    }
+
+    var totalRepsCount: Int {
+        sets.reduce(0) { $0 + $1.reps }
+    }
+
+    var totalVolume: Double {
+        sets.reduce(0) { $0 + ($1.weight * Double($1.reps)) }
     }
 }

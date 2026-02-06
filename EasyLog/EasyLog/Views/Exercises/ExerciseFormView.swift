@@ -70,12 +70,26 @@ struct ExerciseFormView: View {
                 }
 
                 Section("Category") {
-                    Picker("Category", selection: $category) {
+                    Menu {
                         ForEach(Exercise.Category.allCases, id: \.self) { cat in
-                            Text(cat.rawValue).tag(cat)
+                            Button {
+                                category = cat
+                            } label: {
+                                if cat == category {
+                                    Label(cat.rawValue, systemImage: "checkmark")
+                                } else {
+                                    Text(cat.rawValue)
+                                }
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Text("Category")
+                            Spacer()
+                            Text(category.rawValue)
+                                .foregroundColor(.secondary)
                         }
                     }
-                    .pickerStyle(.segmented)
                 }
             }
             .navigationTitle(isEditing ? "Edit Exercise" : "New Exercise")

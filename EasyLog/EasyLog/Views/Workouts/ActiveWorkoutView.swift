@@ -47,6 +47,9 @@ struct ActiveWorkoutView: View {
                         Text("Started \(DateFormatters.display.string(from: currentSession.startDate))")
                             .font(.caption)
                             .foregroundColor(.secondary)
+                        Text("\(currentSession.totalSetsCount) sets · \(currentSession.totalRepsCount) reps · \(currentSession.totalVolume, specifier: "%.0f") kg")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                     }
                     Spacer()
                     Text(DateFormatters.duration(from: currentSession.startDate, to: Date()))
@@ -257,5 +260,19 @@ private struct AddExerciseToSessionView: View {
                 }
             }
         }
+    }
+}
+
+private extension WorkoutSession {
+    var totalSetsCount: Int {
+        sets.count
+    }
+
+    var totalRepsCount: Int {
+        sets.reduce(0) { $0 + $1.reps }
+    }
+
+    var totalVolume: Double {
+        sets.reduce(0) { $0 + ($1.weight * Double($1.reps)) }
     }
 }

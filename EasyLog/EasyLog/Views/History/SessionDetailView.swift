@@ -19,6 +19,18 @@ struct SessionDetailView: View {
         return ordered
     }
 
+    private var totalSetsCount: Int {
+        session.sets.count
+    }
+
+    private var totalRepsCount: Int {
+        session.sets.reduce(0) { $0 + $1.reps }
+    }
+
+    private var totalVolume: Double {
+        session.sets.reduce(0) { $0 + ($1.weight * Double($1.reps)) }
+    }
+
     var body: some View {
         List {
             Section("Summary") {
@@ -29,6 +41,9 @@ struct SessionDetailView: View {
                 }
                 let completed = session.sets.filter { $0.isCompleted }.count
                 LabeledContent("Sets Completed", value: "\(completed)/\(session.sets.count)")
+                LabeledContent("Total Sets", value: "\(totalSetsCount)")
+                LabeledContent("Total Reps", value: "\(totalRepsCount)")
+                LabeledContent("Total Volume", value: String(format: "%.0f kg", totalVolume))
             }
 
             ForEach(exerciseGroups, id: \.0) { _, name, sets in
