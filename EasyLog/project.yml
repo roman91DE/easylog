@@ -1,0 +1,45 @@
+name: EasyLog
+options:
+  bundleIdPrefix: com.easylog
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+
+targets:
+  EasyLog:
+    type: application
+    platform: iOS
+    sources:
+      - EasyLog
+    settings:
+      base:
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        SWIFT_EMIT_LOC_STRINGS: YES
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.easylog.EasyLog
+        PRODUCT_NAME: EasyLog
+        SWIFT_VERSION: "5.9"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+
+  EasyLogTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - EasyLogTests
+    dependencies:
+      - target: EasyLog
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.easylog.EasyLogTests
+        SWIFT_VERSION: "5.9"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/EasyLog.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EasyLog"
+        BUNDLE_LOADER: "$(TEST_HOST)"

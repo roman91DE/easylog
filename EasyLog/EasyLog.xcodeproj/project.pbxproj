@@ -1,0 +1,554 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09C739DBF4E9291E87E3112C /* CSVImportExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB92696D827003FFD9BDB5E /* CSVImportExportView.swift */; };
+		0D62D444F3FA420A43875C93 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AAC2A0635CF352B7139A88 /* DataStoreTests.swift */; };
+		0DFCBF60AA00EFD7F7CDC43B /* EasyLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589910B58A1CFAF711CC7FB /* EasyLogApp.swift */; };
+		1C89427384137C174DB62E0A /* ActiveWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F889DF3A9BEF9189E05326B9 /* ActiveWorkoutView.swift */; };
+		27F4279FE8A893FF6FC128A2 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDDCA1B801444E36427B3C /* ExerciseFormView.swift */; };
+		29EEF286B0AA79A3F99F9456 /* WorkoutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B29365BAEA6D488B140D6A1 /* WorkoutListView.swift */; };
+		3185B8BF60F9FDB109FA853A /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB65B7209521A35BD342B097 /* SessionDetailView.swift */; };
+		37391E088CBD19AE9DC6CC03 /* CSVManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678636584C38D2262D7B4C1 /* CSVManagerTests.swift */; };
+		4B523CD8F107126601C94495 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC1801D2A3366EAE1891F7 /* ModelTests.swift */; };
+		4EB388EDE116A1F0B9B63408 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5DEC795760BAE8DE15E467 /* DateFormatters.swift */; };
+		5D56706F26D0432DCE151794 /* CSVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC834EFD87F11204293B9A /* CSVManager.swift */; };
+		6300C90B2BD601EB09382EAF /* ExercisePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A15A78C80458AC1DFEB9D4 /* ExercisePickerView.swift */; };
+		8DC8A0ABFAA25C163646C364 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C296A208443D2D05FD269 /* DataStore.swift */; };
+		911743CDF97E12F1BB46D832 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC86C5D083A7ABC4165EC7D /* ExerciseListView.swift */; };
+		94DFD1A267930BC06193CA56 /* TemplateFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B020BDDAF732E6C69D6335 /* TemplateFormView.swift */; };
+		D2F611386ABA072C686749AE /* WorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47BE50DAD6845E7ED737E9C /* WorkoutSession.swift */; };
+		D44B2C434C62B0FC23532903 /* ImportResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26490008539335FC789A5903 /* ImportResult.swift */; };
+		E454123C84E3EC59EAF974C3 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6008EACB157D72047ACA2C /* ExerciseDetailView.swift */; };
+		E90899F64F3509A802BEEE58 /* WorkoutTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E5256DC82EAB1501D16A42 /* WorkoutTemplate.swift */; };
+		EEF47911E97C5D53D78D67E7 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CBAED431B1EBF048479459 /* Exercise.swift */; };
+		F1A819481FF36AC043ACF6EF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947765BC570AD35FC9D2EB32 /* ContentView.swift */; };
+		F680E72321102DCBA41C53DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1004DB1E895C86CC803C2AEB /* Assets.xcassets */; };
+		F89747C82E63878808A6BDD6 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39505705F3E6D0ACB0D16A /* HistoryListView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D328D04209D752E706F9E1BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E13F7C36BF7638AF2C8BD718 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF7A565861CA4BFDB1A7C1E9;
+			remoteInfo = EasyLog;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05E5256DC82EAB1501D16A42 /* WorkoutTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplate.swift; sourceTree = "<group>"; };
+		0DB92696D827003FFD9BDB5E /* CSVImportExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVImportExportView.swift; sourceTree = "<group>"; };
+		1004DB1E895C86CC803C2AEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		19CBAED431B1EBF048479459 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		26490008539335FC789A5903 /* ImportResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportResult.swift; sourceTree = "<group>"; };
+		30BC834EFD87F11204293B9A /* CSVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVManager.swift; sourceTree = "<group>"; };
+		4BC86C5D083A7ABC4165EC7D /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
+		512C10741E76538F0A26EB67 /* EasyLog.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = EasyLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56CDDCA1B801444E36427B3C /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
+		7B29365BAEA6D488B140D6A1 /* WorkoutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListView.swift; sourceTree = "<group>"; };
+		7BAC1801D2A3366EAE1891F7 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		87AAC2A0635CF352B7139A88 /* DataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTests.swift; sourceTree = "<group>"; };
+		947765BC570AD35FC9D2EB32 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9B39505705F3E6D0ACB0D16A /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
+		9C6008EACB157D72047ACA2C /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
+		A678636584C38D2262D7B4C1 /* CSVManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVManagerTests.swift; sourceTree = "<group>"; };
+		B99C296A208443D2D05FD269 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		C47BE50DAD6845E7ED737E9C /* WorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>"; };
+		CB65B7209521A35BD342B097 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
+		D2B020BDDAF732E6C69D6335 /* TemplateFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateFormView.swift; sourceTree = "<group>"; };
+		E8A15A78C80458AC1DFEB9D4 /* ExercisePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePickerView.swift; sourceTree = "<group>"; };
+		E8EE087275F0779AFAE94DD1 /* EasyLogTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = EasyLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED5DEC795760BAE8DE15E467 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		F589910B58A1CFAF711CC7FB /* EasyLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyLogApp.swift; sourceTree = "<group>"; };
+		F889DF3A9BEF9189E05326B9 /* ActiveWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveWorkoutView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0C069522DC85DDF6AB0A445E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				512C10741E76538F0A26EB67 /* EasyLog.app */,
+				E8EE087275F0779AFAE94DD1 /* EasyLogTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14AA55D3AFAADE9B9B7D73CD /* History */ = {
+			isa = PBXGroup;
+			children = (
+				0DB92696D827003FFD9BDB5E /* CSVImportExportView.swift */,
+				9B39505705F3E6D0ACB0D16A /* HistoryListView.swift */,
+				CB65B7209521A35BD342B097 /* SessionDetailView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		1944D593F50C312F99EF0922 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3EA77988FE24DE7FB11D8911 /* Exercises */,
+				14AA55D3AFAADE9B9B7D73CD /* History */,
+				C80B35A465BC3F76E2F2191E /* Workouts */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1FF8B3E6FB6983FA70DF4A82 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ED5DEC795760BAE8DE15E467 /* DateFormatters.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		238318751FF2829F86256694 /* EasyLog */ = {
+			isa = PBXGroup;
+			children = (
+				1004DB1E895C86CC803C2AEB /* Assets.xcassets */,
+				947765BC570AD35FC9D2EB32 /* ContentView.swift */,
+				F589910B58A1CFAF711CC7FB /* EasyLogApp.swift */,
+				1FF8B3E6FB6983FA70DF4A82 /* Helpers */,
+				3B1203962DF3F246FA156260 /* Models */,
+				CC997EF31EB1F40F28D26260 /* Services */,
+				1944D593F50C312F99EF0922 /* Views */,
+			);
+			path = EasyLog;
+			sourceTree = "<group>";
+		};
+		3B1203962DF3F246FA156260 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				19CBAED431B1EBF048479459 /* Exercise.swift */,
+				26490008539335FC789A5903 /* ImportResult.swift */,
+				C47BE50DAD6845E7ED737E9C /* WorkoutSession.swift */,
+				05E5256DC82EAB1501D16A42 /* WorkoutTemplate.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3EA77988FE24DE7FB11D8911 /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				9C6008EACB157D72047ACA2C /* ExerciseDetailView.swift */,
+				56CDDCA1B801444E36427B3C /* ExerciseFormView.swift */,
+				4BC86C5D083A7ABC4165EC7D /* ExerciseListView.swift */,
+			);
+			path = Exercises;
+			sourceTree = "<group>";
+		};
+		4267900D987DD52266865996 = {
+			isa = PBXGroup;
+			children = (
+				238318751FF2829F86256694 /* EasyLog */,
+				8A862017B6D9F0A8110836B2 /* EasyLogTests */,
+				0C069522DC85DDF6AB0A445E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8A862017B6D9F0A8110836B2 /* EasyLogTests */ = {
+			isa = PBXGroup;
+			children = (
+				A678636584C38D2262D7B4C1 /* CSVManagerTests.swift */,
+				87AAC2A0635CF352B7139A88 /* DataStoreTests.swift */,
+				7BAC1801D2A3366EAE1891F7 /* ModelTests.swift */,
+			);
+			path = EasyLogTests;
+			sourceTree = "<group>";
+		};
+		C80B35A465BC3F76E2F2191E /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				F889DF3A9BEF9189E05326B9 /* ActiveWorkoutView.swift */,
+				E8A15A78C80458AC1DFEB9D4 /* ExercisePickerView.swift */,
+				D2B020BDDAF732E6C69D6335 /* TemplateFormView.swift */,
+				7B29365BAEA6D488B140D6A1 /* WorkoutListView.swift */,
+			);
+			path = Workouts;
+			sourceTree = "<group>";
+		};
+		CC997EF31EB1F40F28D26260 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				30BC834EFD87F11204293B9A /* CSVManager.swift */,
+				B99C296A208443D2D05FD269 /* DataStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8071D12EC5301AB5076FC77B /* EasyLogTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB6939F845CE50640F8C956E /* Build configuration list for PBXNativeTarget "EasyLogTests" */;
+			buildPhases = (
+				07E6D9F3C18C8D5CC8490708 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C52B4A8D0B2A188243F6CEC /* PBXTargetDependency */,
+			);
+			name = EasyLogTests;
+			packageProductDependencies = (
+			);
+			productName = EasyLogTests;
+			productReference = E8EE087275F0779AFAE94DD1 /* EasyLogTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DF7A565861CA4BFDB1A7C1E9 /* EasyLog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FB493E88D8C5F05EC11B25C /* Build configuration list for PBXNativeTarget "EasyLog" */;
+			buildPhases = (
+				5F7F543DD38D23CDBAB8A860 /* Sources */,
+				B68E469E781C455C95777DBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyLog;
+			packageProductDependencies = (
+			);
+			productName = EasyLog;
+			productReference = 512C10741E76538F0A26EB67 /* EasyLog.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E13F7C36BF7638AF2C8BD718 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 2B1D2CEB57C2A08FD17D9CB8 /* Build configuration list for PBXProject "EasyLog" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 4267900D987DD52266865996;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DF7A565861CA4BFDB1A7C1E9 /* EasyLog */,
+				8071D12EC5301AB5076FC77B /* EasyLogTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B68E469E781C455C95777DBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F680E72321102DCBA41C53DB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07E6D9F3C18C8D5CC8490708 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37391E088CBD19AE9DC6CC03 /* CSVManagerTests.swift in Sources */,
+				0D62D444F3FA420A43875C93 /* DataStoreTests.swift in Sources */,
+				4B523CD8F107126601C94495 /* ModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F7F543DD38D23CDBAB8A860 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C89427384137C174DB62E0A /* ActiveWorkoutView.swift in Sources */,
+				09C739DBF4E9291E87E3112C /* CSVImportExportView.swift in Sources */,
+				5D56706F26D0432DCE151794 /* CSVManager.swift in Sources */,
+				F1A819481FF36AC043ACF6EF /* ContentView.swift in Sources */,
+				8DC8A0ABFAA25C163646C364 /* DataStore.swift in Sources */,
+				4EB388EDE116A1F0B9B63408 /* DateFormatters.swift in Sources */,
+				0DFCBF60AA00EFD7F7CDC43B /* EasyLogApp.swift in Sources */,
+				EEF47911E97C5D53D78D67E7 /* Exercise.swift in Sources */,
+				E454123C84E3EC59EAF974C3 /* ExerciseDetailView.swift in Sources */,
+				27F4279FE8A893FF6FC128A2 /* ExerciseFormView.swift in Sources */,
+				911743CDF97E12F1BB46D832 /* ExerciseListView.swift in Sources */,
+				6300C90B2BD601EB09382EAF /* ExercisePickerView.swift in Sources */,
+				F89747C82E63878808A6BDD6 /* HistoryListView.swift in Sources */,
+				D44B2C434C62B0FC23532903 /* ImportResult.swift in Sources */,
+				3185B8BF60F9FDB109FA853A /* SessionDetailView.swift in Sources */,
+				94DFD1A267930BC06193CA56 /* TemplateFormView.swift in Sources */,
+				29EEF286B0AA79A3F99F9456 /* WorkoutListView.swift in Sources */,
+				D2F611386ABA072C686749AE /* WorkoutSession.swift in Sources */,
+				E90899F64F3509A802BEEE58 /* WorkoutTemplate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C52B4A8D0B2A188243F6CEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF7A565861CA4BFDB1A7C1E9 /* EasyLog */;
+			targetProxy = D328D04209D752E706F9E1BF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A092009C87CE96155D60A0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		344EA22460459AA3FC9F028A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.easylog.EasyLogTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyLog.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EasyLog";
+			};
+			name = Debug;
+		};
+		5E73A3C161EF68DA45889573 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.easylog.EasyLog;
+				PRODUCT_NAME = EasyLog;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		68DDBE99ED85C2CB2B2AE5EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		732A88F97222F5E0BC987C08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.easylog.EasyLog;
+				PRODUCT_NAME = EasyLog;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A4233822AF2F538B3D7F926D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.easylog.EasyLogTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyLog.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EasyLog";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B1D2CEB57C2A08FD17D9CB8 /* Build configuration list for PBXProject "EasyLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A092009C87CE96155D60A0E /* Debug */,
+				68DDBE99ED85C2CB2B2AE5EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		2FB493E88D8C5F05EC11B25C /* Build configuration list for PBXNativeTarget "EasyLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				732A88F97222F5E0BC987C08 /* Debug */,
+				5E73A3C161EF68DA45889573 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CB6939F845CE50640F8C956E /* Build configuration list for PBXNativeTarget "EasyLogTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				344EA22460459AA3FC9F028A /* Debug */,
+				A4233822AF2F538B3D7F926D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E13F7C36BF7638AF2C8BD718 /* Project object */;
+}
