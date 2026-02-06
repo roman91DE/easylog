@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -51,7 +51,7 @@
 		26490008539335FC789A5903 /* ImportResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportResult.swift; sourceTree = "<group>"; };
 		30BC834EFD87F11204293B9A /* CSVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVManager.swift; sourceTree = "<group>"; };
 		4BC86C5D083A7ABC4165EC7D /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
-		512C10741E76538F0A26EB67 /* EasyLog.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = EasyLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		512C10741E76538F0A26EB67 /* EasyLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56CDDCA1B801444E36427B3C /* ExerciseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFormView.swift; sourceTree = "<group>"; };
 		7B29365BAEA6D488B140D6A1 /* WorkoutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListView.swift; sourceTree = "<group>"; };
 		7BAC1801D2A3366EAE1891F7 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		D2B020BDDAF732E6C69D6335 /* TemplateFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateFormView.swift; sourceTree = "<group>"; };
 		E029D79D95BEAD2597CB90E9 /* MuscleGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroup.swift; sourceTree = "<group>"; };
 		E8A15A78C80458AC1DFEB9D4 /* ExercisePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePickerView.swift; sourceTree = "<group>"; };
-		E8EE087275F0779AFAE94DD1 /* EasyLogTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = EasyLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8EE087275F0779AFAE94DD1 /* EasyLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED5DEC795760BAE8DE15E467 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		F589910B58A1CFAF711CC7FB /* EasyLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyLogApp.swift; sourceTree = "<group>"; };
 		F889DF3A9BEF9189E05326B9 /* ActiveWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveWorkoutView.swift; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 2620;
 			};
 			buildConfigurationList = 2B1D2CEB57C2A08FD17D9CB8 /* Build configuration list for PBXProject "EasyLog" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -243,7 +243,6 @@
 			);
 			mainGroup = 4267900D987DD52266865996;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -350,6 +349,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -370,6 +370,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -458,6 +459,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -471,6 +473,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
