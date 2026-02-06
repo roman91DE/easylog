@@ -28,7 +28,9 @@ final class CSVManagerTests: XCTestCase {
     }
 
     func testExportWithData() {
-        let exercise = Exercise(name: "Bench Press", muscleGroup: "Chest", category: .barbell)
+        let chestID = store.muscleGroups.first { $0.name == "Chest" }!.id
+        let shouldersID = store.muscleGroups.first { $0.name == "Shoulders" }!.id
+        let exercise = Exercise(name: "Bench Press", muscleGroupIDs: [chestID, shouldersID], category: .barbell)
         store.addExercise(exercise)
 
         let template = WorkoutTemplate(name: "Push Day", exerciseIDs: [exercise.id])
@@ -46,15 +48,16 @@ final class CSVManagerTests: XCTestCase {
         // Verify header
         XCTAssertEqual(lines[0], CSVManager.header)
 
-        // Verify data
+        // Verify data contains semicolon-separated muscle groups
         XCTAssertTrue(lines[1].contains("Bench Press"))
-        XCTAssertTrue(lines[1].contains("Chest"))
+        XCTAssertTrue(lines[1].contains("Chest;Shoulders"))
         XCTAssertTrue(lines[1].contains("Barbell"))
         XCTAssertTrue(lines[1].contains("100.0"))
     }
 
     func testExportToFile() {
-        let exercise = Exercise(name: "Squat", muscleGroup: "Legs", category: .barbell)
+        let legsID = store.muscleGroups.first { $0.name == "Legs" }!.id
+        let exercise = Exercise(name: "Squat", muscleGroupIDs: [legsID], category: .barbell)
         store.addExercise(exercise)
 
         let template = WorkoutTemplate(name: "Legs")
@@ -87,9 +90,14 @@ final class CSVManagerTests: XCTestCase {
     // MARK: - Round Trip
 
     func testExportImportRoundTrip() throws {
-        // Create data
-        let exercise1 = Exercise(name: "Bench Press", muscleGroup: "Chest", category: .barbell)
-        let exercise2 = Exercise(name: "Squat", muscleGroup: "Legs", category: .barbell)
+        // Create data with multiple muscle groups
+        let chestID = store.muscleGroups.first { $0.name == "Chest" }!.id
+        let shouldersID = store.muscleGroups.first { $0.name == "Shoulders" }!.id
+        let legsID = store.muscleGroups.first { $0.name == "Legs" }!.id
+        let glutesID = store.muscleGroups.first { $0.name == "Glutes" }!.id
+
+        let exercise1 = Exercise(name: "Bench Press", muscleGroupIDs: [chestID, shouldersID], category: .barbell)
+        let exercise2 = Exercise(name: "Squat", muscleGroupIDs: [legsID, glutesID], category: .barbell)
         store.addExercise(exercise1)
         store.addExercise(exercise2)
 
@@ -103,6 +111,10 @@ final class CSVManagerTests: XCTestCase {
 
         // Export
         let csv = CSVManager.exportCSV(from: store)
+
+        // Verify CSV contains semicolon-separated muscle groups
+        XCTAssertTrue(csv.contains("Chest;Shoulders"))
+        XCTAssertTrue(csv.contains("Legs;Glutes"))
 
         // Create a new store for import
         let importDir = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -120,18 +132,23 @@ final class CSVManagerTests: XCTestCase {
 
         XCTAssertEqual(result.sessionsImported, 1)
         XCTAssertEqual(result.setsImported, 2)
-        XCTAssertEqual(result.exercisesCreated, 2) // exercises are new in import store
+        XCTAssertEqual(result.exercisesCreated, 2)
         XCTAssertEqual(result.rowsSkipped, 0)
         XCTAssertTrue(result.errors.isEmpty)
 
-        // Verify imported data
-        XCTAssertEqual(importStore.sessions.count, 1)
-        XCTAssertEqual(importStore.sessions.first?.sets.count, 2)
+        // Verify imported exercises have multiple muscle groups
         XCTAssertEqual(importStore.exercises.count, 2)
+        let importedBench = importStore.exercises.first { $0.name == "Bench Press" }!
+        XCTAssertEqual(importedBench.muscleGroupIDs.count, 2)
+
+        let importedBenchNames = importStore.muscleGroupNames(for: importedBench)
+        XCTAssertTrue(importedBenchNames.contains("Chest"))
+        XCTAssertTrue(importedBenchNames.contains("Shoulders"))
     }
 
     func testImportSkipsDuplicates() throws {
-        let exercise = Exercise(name: "Curl", muscleGroup: "Biceps", category: .dumbbell)
+        let bicepsID = store.muscleGroups.first { $0.name == "Biceps" }!.id
+        let exercise = Exercise(name: "Curl", muscleGroupIDs: [bicepsID], category: .dumbbell)
         store.addExercise(exercise)
 
         let session = store.startSession(from: WorkoutTemplate(name: "Arms"))

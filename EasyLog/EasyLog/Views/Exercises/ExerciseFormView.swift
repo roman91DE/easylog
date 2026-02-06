@@ -7,17 +7,16 @@ struct ExerciseFormView: View {
     let exercise: Exercise?
 
     @State private var name: String
-    @State private var muscleGroup: String
+    @State private var selectedMuscleGroupIDs: Set<UUID>
     @State private var category: Exercise.Category
+    @State private var newMuscleGroupName = ""
 
     private var isEditing: Bool { exercise != nil }
-
-    static let commonMuscleGroups = ["Chest", "Back", "Shoulders", "Biceps", "Triceps", "Legs", "Glutes", "Core", "Full Body", "Cardio"]
 
     init(exercise: Exercise?) {
         self.exercise = exercise
         _name = State(initialValue: exercise?.name ?? "")
-        _muscleGroup = State(initialValue: exercise?.muscleGroup ?? "")
+        _selectedMuscleGroupIDs = State(initialValue: Set(exercise?.muscleGroupIDs ?? []))
         _category = State(initialValue: exercise?.category ?? .barbell)
     }
 
@@ -29,20 +28,44 @@ struct ExerciseFormView: View {
                         .autocorrectionDisabled()
                 }
 
-                Section("Muscle Group") {
-                    TextField("Muscle group", text: $muscleGroup)
-                        .autocorrectionDisabled()
-
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(Self.commonMuscleGroups, id: \.self) { group in
-                                Button(group) {
-                                    muscleGroup = group
+                Section {
+                    ForEach(dataStore.muscleGroups) { group in
+                        Button {
+                            toggleGroup(group.id)
+                        } label: {
+                            HStack {
+                                Text(group.name)
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                if selectedMuscleGroupIDs.contains(group.id) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.blue)
+                                } else {
+                                    Image(systemName: "circle")
+                                        .foregroundColor(.gray)
                                 }
-                                .buttonStyle(.bordered)
-                                .tint(muscleGroup == group ? .blue : .gray)
                             }
                         }
+                    }
+
+                    HStack {
+                        TextField("New muscle group", text: $newMuscleGroupName)
+                            .autocorrectionDisabled()
+                        Button {
+                            addCustomMuscleGroup()
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                        }
+                        .disabled(newMuscleGroupName.trimmingCharacters(in: .whitespaces).isEmpty)
+                    }
+                } header: {
+                    Text("Muscle Groups")
+                } footer: {
+                    if !selectedMuscleGroupIDs.isEmpty {
+                        let names = dataStore.muscleGroups
+                            .filter { selectedMuscleGroupIDs.contains($0.id) }
+                            .map { $0.name }
+                        Text("Selected: \(names.joined(separator: ", "))")
                     }
                 }
 
@@ -69,21 +92,41 @@ struct ExerciseFormView: View {
         }
     }
 
+    private func toggleGroup(_ id: UUID) {
+        if selectedMuscleGroupIDs.contains(id) {
+            selectedMuscleGroupIDs.remove(id)
+        } else {
+            selectedMuscleGroupIDs.insert(id)
+        }
+    }
+
+    private func addCustomMuscleGroup() {
+        let trimmed = newMuscleGroupName.trimmingCharacters(in: .whitespaces)
+        guard !trimmed.isEmpty else { return }
+        let group = dataStore.findOrCreateMuscleGroup(named: trimmed)
+        selectedMuscleGroupIDs.insert(group.id)
+        newMuscleGroupName = ""
+    }
+
     private func save() {
         let trimmedName = name.trimmingCharacters(in: .whitespaces)
-        let trimmedGroup = muscleGroup.trimmingCharacters(in: .whitespaces)
         guard !trimmedName.isEmpty else { return }
+
+        // Preserve order from the muscleGroups array
+        let orderedIDs = dataStore.muscleGroups
+            .filter { selectedMuscleGroupIDs.contains($0.id) }
+            .map { $0.id }
 
         if let existing = exercise {
             var updated = existing
             updated.name = trimmedName
-            updated.muscleGroup = trimmedGroup.isEmpty ? "Other" : trimmedGroup
+            updated.muscleGroupIDs = orderedIDs
             updated.category = category
             dataStore.updateExercise(updated)
         } else {
             let newExercise = Exercise(
                 name: trimmedName,
-                muscleGroup: trimmedGroup.isEmpty ? "Other" : trimmedGroup,
+                muscleGroupIDs: orderedIDs,
                 category: category
             )
             dataStore.addExercise(newExercise)

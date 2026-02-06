@@ -10,7 +10,10 @@ struct ExerciseListView: View {
             return dataStore.exercises.sorted { $0.name < $1.name }
         }
         return dataStore.exercises
-            .filter { $0.name.localizedCaseInsensitiveContains(searchText) || $0.muscleGroup.localizedCaseInsensitiveContains(searchText) }
+            .filter { exercise in
+                exercise.name.localizedCaseInsensitiveContains(searchText) ||
+                dataStore.muscleGroupNames(for: exercise).contains { $0.localizedCaseInsensitiveContains(searchText) }
+            }
             .sorted { $0.name < $1.name }
     }
 
@@ -37,7 +40,7 @@ struct ExerciseListView: View {
                                     Text(exercise.name)
                                         .font(.headline)
                                     HStack {
-                                        Text(exercise.muscleGroup)
+                                        Text(dataStore.muscleGroupNamesJoined(for: exercise))
                                         Text("·")
                                         Text(exercise.category.rawValue)
                                     }

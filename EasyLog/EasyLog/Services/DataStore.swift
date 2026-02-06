@@ -4,6 +4,7 @@ class DataStore: ObservableObject {
     @Published var exercises: [Exercise] = []
     @Published var templates: [WorkoutTemplate] = []
     @Published var sessions: [WorkoutSession] = []
+    @Published var muscleGroups: [MuscleGroup] = []
 
     private let documentsURL: URL
     private let encoder: JSONEncoder
@@ -19,6 +20,12 @@ class DataStore: ObservableObject {
         decoder.dateDecodingStrategy = .iso8601
 
         try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+
+        muscleGroups = load(filename: "muscleGroups.json") ?? []
+        if muscleGroups.isEmpty {
+            muscleGroups = MuscleGroup.defaultGroups
+            saveMuscleGroups()
+        }
 
         exercises = load(filename: "exercises.json") ?? []
         templates = load(filename: "templates.json") ?? []
@@ -71,6 +78,52 @@ class DataStore: ObservableObject {
     private func saveExercises() { save(exercises, filename: "exercises.json") }
     private func saveTemplates() { save(templates, filename: "templates.json") }
     private func saveSessions() { save(sessions, filename: "sessions.json") }
+    private func saveMuscleGroups() { save(muscleGroups, filename: "muscleGroups.json") }
+
+    // MARK: - MuscleGroup CRUD
+
+    func addMuscleGroup(_ group: MuscleGroup) {
+        muscleGroups.append(group)
+        saveMuscleGroups()
+    }
+
+    func updateMuscleGroup(_ group: MuscleGroup) {
+        if let i = muscleGroups.firstIndex(where: { $0.id == group.id }) {
+            muscleGroups[i] = group
+            saveMuscleGroups()
+        }
+    }
+
+    func deleteMuscleGroup(_ group: MuscleGroup) {
+        muscleGroups.removeAll { $0.id == group.id }
+        saveMuscleGroups()
+    }
+
+    func muscleGroup(for id: UUID) -> MuscleGroup? {
+        muscleGroups.first { $0.id == id }
+    }
+
+    func muscleGroupNames(for exercise: Exercise) -> [String] {
+        exercise.muscleGroupIDs.compactMap { muscleGroup(for: $0)?.name }
+    }
+
+    func muscleGroupNamesJoined(for exercise: Exercise) -> String {
+        let names = muscleGroupNames(for: exercise)
+        return names.isEmpty ? "No muscle group" : names.joined(separator: ", ")
+    }
+
+    func primaryMuscleGroupName(for exercise: Exercise) -> String {
+        exercise.muscleGroupIDs.first.flatMap { muscleGroup(for: $0)?.name } ?? "Other"
+    }
+
+    func findOrCreateMuscleGroup(named name: String) -> MuscleGroup {
+        if let existing = muscleGroups.first(where: { $0.name.lowercased() == name.lowercased() }) {
+            return existing
+        }
+        let newGroup = MuscleGroup(name: name)
+        addMuscleGroup(newGroup)
+        return newGroup
+    }
 
     // MARK: - Exercise CRUD
 
@@ -218,8 +271,10 @@ class DataStore: ObservableObject {
         exercises = []
         templates = []
         sessions = []
+        muscleGroups = MuscleGroup.defaultGroups
         saveExercises()
         saveTemplates()
         saveSessions()
+        saveMuscleGroups()
     }
 }

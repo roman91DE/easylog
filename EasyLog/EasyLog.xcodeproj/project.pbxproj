@@ -11,6 +11,7 @@
 		0D62D444F3FA420A43875C93 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AAC2A0635CF352B7139A88 /* DataStoreTests.swift */; };
 		0DFCBF60AA00EFD7F7CDC43B /* EasyLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F589910B58A1CFAF711CC7FB /* EasyLogApp.swift */; };
 		1C89427384137C174DB62E0A /* ActiveWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F889DF3A9BEF9189E05326B9 /* ActiveWorkoutView.swift */; };
+		215031C3186148F22A61A712 /* MuscleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E029D79D95BEAD2597CB90E9 /* MuscleGroup.swift */; };
 		27F4279FE8A893FF6FC128A2 /* ExerciseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDDCA1B801444E36427B3C /* ExerciseFormView.swift */; };
 		29EEF286B0AA79A3F99F9456 /* WorkoutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B29365BAEA6D488B140D6A1 /* WorkoutListView.swift */; };
 		3185B8BF60F9FDB109FA853A /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB65B7209521A35BD342B097 /* SessionDetailView.swift */; };
@@ -63,6 +64,7 @@
 		C47BE50DAD6845E7ED737E9C /* WorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>"; };
 		CB65B7209521A35BD342B097 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		D2B020BDDAF732E6C69D6335 /* TemplateFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateFormView.swift; sourceTree = "<group>"; };
+		E029D79D95BEAD2597CB90E9 /* MuscleGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroup.swift; sourceTree = "<group>"; };
 		E8A15A78C80458AC1DFEB9D4 /* ExercisePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePickerView.swift; sourceTree = "<group>"; };
 		E8EE087275F0779AFAE94DD1 /* EasyLogTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = EasyLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED5DEC795760BAE8DE15E467 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				19CBAED431B1EBF048479459 /* Exercise.swift */,
 				26490008539335FC789A5903 /* ImportResult.swift */,
+				E029D79D95BEAD2597CB90E9 /* MuscleGroup.swift */,
 				C47BE50DAD6845E7ED737E9C /* WorkoutSession.swift */,
 				05E5256DC82EAB1501D16A42 /* WorkoutTemplate.swift */,
 			);
@@ -290,6 +293,7 @@
 				6300C90B2BD601EB09382EAF /* ExercisePickerView.swift in Sources */,
 				F89747C82E63878808A6BDD6 /* HistoryListView.swift in Sources */,
 				D44B2C434C62B0FC23532903 /* ImportResult.swift in Sources */,
+				215031C3186148F22A61A712 /* MuscleGroup.swift in Sources */,
 				3185B8BF60F9FDB109FA853A /* SessionDetailView.swift in Sources */,
 				94DFD1A267930BC06193CA56 /* TemplateFormView.swift in Sources */,
 				29EEF286B0AA79A3F99F9456 /* WorkoutListView.swift in Sources */,

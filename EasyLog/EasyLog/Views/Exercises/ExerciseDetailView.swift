@@ -17,7 +17,7 @@ struct ExerciseDetailView: View {
     var body: some View {
         List {
             Section("Details") {
-                LabeledContent("Muscle Group", value: currentExercise.muscleGroup)
+                LabeledContent("Muscle Groups", value: dataStore.muscleGroupNamesJoined(for: currentExercise))
                 LabeledContent("Category", value: currentExercise.category.rawValue)
             }
 

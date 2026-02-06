@@ -3,7 +3,7 @@ import Foundation
 struct Exercise: Codable, Identifiable, Hashable {
     let id: UUID
     var name: String
-    var muscleGroup: String
+    var muscleGroupIDs: [UUID]
     var category: Category
 
     enum Category: String, Codable, CaseIterable {
@@ -15,10 +15,10 @@ struct Exercise: Codable, Identifiable, Hashable {
         case other = "Other"
     }
 
-    init(id: UUID = UUID(), name: String, muscleGroup: String, category: Category) {
+    init(id: UUID = UUID(), name: String, muscleGroupIDs: [UUID] = [], category: Category) {
         self.id = id
         self.name = name
-        self.muscleGroup = muscleGroup
+        self.muscleGroupIDs = muscleGroupIDs
         self.category = category
     }
 }

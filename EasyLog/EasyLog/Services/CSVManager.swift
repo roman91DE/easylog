@@ -16,7 +16,8 @@ enum CSVManager {
             for set in session.sets {
                 let exercise = dataStore.exercise(for: set.exerciseID)
                 let exerciseName = csvEscape(exercise?.name ?? "Unknown Exercise")
-                let muscleGroup = csvEscape(exercise?.muscleGroup ?? "Unknown")
+                let muscleGroupNames = exercise.map { dataStore.muscleGroupNames(for: $0).joined(separator: ";") } ?? "Unknown"
+                let muscleGroup = csvEscape(muscleGroupNames)
                 let category = exercise?.category.rawValue ?? "Other"
 
                 let line = [
@@ -123,16 +124,23 @@ enum CSVManager {
 
             for (rowNum, rowFields) in rows {
                 let exerciseName = csvUnescape(rowFields[4])
-                let muscleGroup = csvUnescape(rowFields[5])
+                let muscleGroupField = csvUnescape(rowFields[5])
                 let categoryStr = rowFields[6]
                 let category = Exercise.Category(rawValue: categoryStr) ?? .other
+
+                // Parse semicolon-separated muscle group names and resolve to IDs
+                let muscleGroupIDs = muscleGroupField
+                    .split(separator: ";")
+                    .map { String($0).trimmingCharacters(in: .whitespaces) }
+                    .filter { !$0.isEmpty }
+                    .map { dataStore.findOrCreateMuscleGroup(named: $0).id }
 
                 // Find or create exercise
                 var exercise = dataStore.exercises.first {
                     $0.name.lowercased() == exerciseName.lowercased()
                 }
                 if exercise == nil {
-                    let newExercise = Exercise(name: exerciseName, muscleGroup: muscleGroup, category: category)
+                    let newExercise = Exercise(name: exerciseName, muscleGroupIDs: muscleGroupIDs, category: category)
                     dataStore.addExerciseFromImport(newExercise)
                     exercise = newExercise
                     result.exercisesCreated += 1

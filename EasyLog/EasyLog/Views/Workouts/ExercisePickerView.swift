@@ -11,13 +11,13 @@ struct ExercisePickerView: View {
         if searchText.isEmpty {
             filtered = dataStore.exercises
         } else {
-            filtered = dataStore.exercises.filter {
-                $0.name.localizedCaseInsensitiveContains(searchText) ||
-                $0.muscleGroup.localizedCaseInsensitiveContains(searchText)
+            filtered = dataStore.exercises.filter { exercise in
+                exercise.name.localizedCaseInsensitiveContains(searchText) ||
+                dataStore.muscleGroupNames(for: exercise).contains { $0.localizedCaseInsensitiveContains(searchText) }
             }
         }
 
-        let grouped = Dictionary(grouping: filtered) { $0.muscleGroup }
+        let grouped = Dictionary(grouping: filtered) { dataStore.primaryMuscleGroupName(for: $0) }
         return grouped.sorted { $0.key < $1.key }
     }
 

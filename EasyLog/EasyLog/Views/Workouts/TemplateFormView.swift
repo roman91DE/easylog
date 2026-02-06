@@ -35,7 +35,7 @@ struct TemplateFormView: View {
                                 HStack {
                                     Text(exercise.name)
                                     Spacer()
-                                    Text(exercise.muscleGroup)
+                                    Text(dataStore.muscleGroupNamesJoined(for: exercise))
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
                                 }

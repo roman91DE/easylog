@@ -3,23 +3,46 @@ import XCTest
 
 final class ModelTests: XCTestCase {
 
+    // MARK: - MuscleGroup
+
+    func testMuscleGroupEncodeDecode() throws {
+        let group = MuscleGroup(name: "Chest")
+        let data = try JSONEncoder().encode(group)
+        let decoded = try JSONDecoder().decode(MuscleGroup.self, from: data)
+
+        XCTAssertEqual(decoded.id, group.id)
+        XCTAssertEqual(decoded.name, "Chest")
+    }
+
+    func testMuscleGroupDefaults() {
+        let defaults = MuscleGroup.defaultGroups
+        XCTAssertEqual(defaults.count, 10)
+        XCTAssertEqual(defaults.first?.name, "Chest")
+    }
+
     // MARK: - Exercise
 
     func testExerciseEncodeDecode() throws {
-        let exercise = Exercise(name: "Bench Press", muscleGroup: "Chest", category: .barbell)
+        let groupIDs = [UUID(), UUID()]
+        let exercise = Exercise(name: "Bench Press", muscleGroupIDs: groupIDs, category: .barbell)
         let data = try JSONEncoder().encode(exercise)
         let decoded = try JSONDecoder().decode(Exercise.self, from: data)
 
         XCTAssertEqual(decoded.id, exercise.id)
         XCTAssertEqual(decoded.name, "Bench Press")
-        XCTAssertEqual(decoded.muscleGroup, "Chest")
+        XCTAssertEqual(decoded.muscleGroupIDs, groupIDs)
         XCTAssertEqual(decoded.category, .barbell)
     }
 
     func testExerciseDefaultID() {
-        let e1 = Exercise(name: "A", muscleGroup: "B", category: .machine)
-        let e2 = Exercise(name: "A", muscleGroup: "B", category: .machine)
+        let e1 = Exercise(name: "A", muscleGroupIDs: [], category: .machine)
+        let e2 = Exercise(name: "A", muscleGroupIDs: [], category: .machine)
         XCTAssertNotEqual(e1.id, e2.id)
+    }
+
+    func testExerciseDefaultEmptyMuscleGroups() {
+        let exercise = Exercise(name: "Test", category: .bodyweight)
+        XCTAssertTrue(exercise.muscleGroupIDs.isEmpty)
     }
 
     // MARK: - WorkoutTemplate

@@ -18,10 +18,78 @@ final class DataStoreTests: XCTestCase {
         super.tearDown()
     }
 
+    // MARK: - MuscleGroup CRUD
+
+    func testDefaultMuscleGroupsSeeded() {
+        XCTAssertEqual(store.muscleGroups.count, 10)
+        XCTAssertEqual(store.muscleGroups.first?.name, "Chest")
+    }
+
+    func testAddMuscleGroup() {
+        let group = MuscleGroup(name: "Forearms")
+        store.addMuscleGroup(group)
+        XCTAssertEqual(store.muscleGroups.count, 11)
+    }
+
+    func testUpdateMuscleGroup() {
+        var group = store.muscleGroups.first!
+        group.name = "Upper Chest"
+        store.updateMuscleGroup(group)
+        XCTAssertEqual(store.muscleGroups.first?.name, "Upper Chest")
+    }
+
+    func testDeleteMuscleGroup() {
+        let group = store.muscleGroups.first!
+        store.deleteMuscleGroup(group)
+        XCTAssertEqual(store.muscleGroups.count, 9)
+    }
+
+    func testMuscleGroupLookup() {
+        let group = store.muscleGroups.first!
+        XCTAssertNotNil(store.muscleGroup(for: group.id))
+        XCTAssertNil(store.muscleGroup(for: UUID()))
+    }
+
+    func testFindOrCreateMuscleGroup() {
+        // Existing group (case-insensitive)
+        let existing = store.findOrCreateMuscleGroup(named: "chest")
+        XCTAssertEqual(existing.name, "Chest")
+        XCTAssertEqual(store.muscleGroups.count, 10)
+
+        // New group
+        let newGroup = store.findOrCreateMuscleGroup(named: "Forearms")
+        XCTAssertEqual(newGroup.name, "Forearms")
+        XCTAssertEqual(store.muscleGroups.count, 11)
+    }
+
+    func testMuscleGroupNamesForExercise() {
+        let chestID = store.muscleGroups.first { $0.name == "Chest" }!.id
+        let shouldersID = store.muscleGroups.first { $0.name == "Shoulders" }!.id
+
+        let exercise = Exercise(name: "Bench Press", muscleGroupIDs: [chestID, shouldersID], category: .barbell)
+        store.addExercise(exercise)
+
+        let names = store.muscleGroupNames(for: exercise)
+        XCTAssertEqual(names, ["Chest", "Shoulders"])
+
+        let joined = store.muscleGroupNamesJoined(for: exercise)
+        XCTAssertEqual(joined, "Chest, Shoulders")
+
+        let primary = store.primaryMuscleGroupName(for: exercise)
+        XCTAssertEqual(primary, "Chest")
+    }
+
+    func testMuscleGroupNamesForExerciseEmpty() {
+        let exercise = Exercise(name: "Test", category: .other)
+        XCTAssertEqual(store.muscleGroupNamesJoined(for: exercise), "No muscle group")
+        XCTAssertEqual(store.primaryMuscleGroupName(for: exercise), "Other")
+    }
+
     // MARK: - Exercise CRUD
 
     func testAddExercise() {
-        let exercise = Exercise(name: "Squat", muscleGroup: "Legs", category: .barbell)
+        let legsID = store.muscleGroups.first { $0.name == "Legs" }!.id
+        let exercise = Exercise(name: "Squat", muscleGroupIDs: [legsID], category: .barbell)
         store.addExercise(exercise)
 
         XCTAssertEqual(store.exercises.count, 1)
@@ -29,7 +97,8 @@ final class DataStoreTests: XCTestCase {
     }
 
     func testUpdateExercise() {
-        var exercise = Exercise(name: "Squat", muscleGroup: "Legs", category: .barbell)
+        let legsID = store.muscleGroups.first { $0.name == "Legs" }!.id
+        var exercise = Exercise(name: "Squat", muscleGroupIDs: [legsID], category: .barbell)
         store.addExercise(exercise)
 
         exercise.name = "Back Squat"
@@ -39,7 +108,7 @@ final class DataStoreTests: XCTestCase {
     }
 
     func testDeleteExercise() {
-        let exercise = Exercise(name: "Squat", muscleGroup: "Legs", category: .barbell)
+        let exercise = Exercise(name: "Squat", muscleGroupIDs: [], category: .barbell)
         store.addExercise(exercise)
         store.deleteExercise(exercise)
 
@@ -47,7 +116,7 @@ final class DataStoreTests: XCTestCase {
     }
 
     func testExerciseLookup() {
-        let exercise = Exercise(name: "Squat", muscleGroup: "Legs", category: .barbell)
+        let exercise = Exercise(name: "Squat", muscleGroupIDs: [], category: .barbell)
         store.addExercise(exercise)
 
         XCTAssertNotNil(store.exercise(for: exercise.id))
@@ -166,7 +235,8 @@ final class DataStoreTests: XCTestCase {
     // MARK: - Persistence
 
     func testPersistenceRoundTrip() {
-        let exercise = Exercise(name: "Deadlift", muscleGroup: "Back", category: .barbell)
+        let backID = store.muscleGroups.first { $0.name == "Back" }!.id
+        let exercise = Exercise(name: "Deadlift", muscleGroupIDs: [backID], category: .barbell)
         store.addExercise(exercise)
 
         let template = WorkoutTemplate(name: "Pull Day", exerciseIDs: [exercise.id])
@@ -185,10 +255,12 @@ final class DataStoreTests: XCTestCase {
         XCTAssertEqual(store2.sessions.count, 1)
         XCTAssertEqual(store2.sessions.first?.sets.count, 1)
         XCTAssertEqual(store2.sessions.first?.sets.first?.weight, 140)
+        XCTAssertEqual(store2.muscleGroups.count, 10)
     }
 
     func testBackupRecovery() {
-        let exercise = Exercise(name: "Curl", muscleGroup: "Biceps", category: .dumbbell)
+        let bicepsID = store.muscleGroups.first { $0.name == "Biceps" }!.id
+        let exercise = Exercise(name: "Curl", muscleGroupIDs: [bicepsID], category: .dumbbell)
         store.addExercise(exercise)
 
         // Corrupt the primary file
@@ -199,6 +271,15 @@ final class DataStoreTests: XCTestCase {
         let store2 = DataStore(directory: testDir)
         XCTAssertEqual(store2.exercises.count, 1)
         XCTAssertEqual(store2.exercises.first?.name, "Curl")
+    }
+
+    func testMuscleGroupPersistence() {
+        let newGroup = MuscleGroup(name: "Forearms")
+        store.addMuscleGroup(newGroup)
+
+        let store2 = DataStore(directory: testDir)
+        XCTAssertEqual(store2.muscleGroups.count, 11)
+        XCTAssertTrue(store2.muscleGroups.contains { $0.name == "Forearms" })
     }
 
     // MARK: - Queries
@@ -226,7 +307,7 @@ final class DataStoreTests: XCTestCase {
     }
 
     func testRemovedExerciseCount() {
-        let exercise = Exercise(name: "Test", muscleGroup: "Test", category: .other)
+        let exercise = Exercise(name: "Test", muscleGroupIDs: [], category: .other)
         store.addExercise(exercise)
 
         let template = WorkoutTemplate(name: "T", exerciseIDs: [exercise.id, UUID()])
@@ -239,7 +320,7 @@ final class DataStoreTests: XCTestCase {
     // MARK: - Delete All
 
     func testDeleteAllData() {
-        store.addExercise(Exercise(name: "A", muscleGroup: "B", category: .other))
+        store.addExercise(Exercise(name: "A", muscleGroupIDs: [], category: .other))
         store.addTemplate(WorkoutTemplate(name: "T"))
         let _ = store.startFreeSession(name: "S")
 
@@ -248,5 +329,7 @@ final class DataStoreTests: XCTestCase {
         XCTAssertTrue(store.exercises.isEmpty)
         XCTAssertTrue(store.templates.isEmpty)
         XCTAssertTrue(store.sessions.isEmpty)
+        // Muscle groups reset to defaults
+        XCTAssertEqual(store.muscleGroups.count, 10)
     }
 }

@@ -242,7 +242,7 @@ private struct AddExerciseToSessionView: View {
                         VStack(alignment: .leading) {
                             Text(exercise.name)
                                 .foregroundColor(.primary)
-                            Text("\(exercise.muscleGroup) · \(exercise.category.rawValue)")
+                            Text("\(dataStore.muscleGroupNamesJoined(for: exercise)) · \(exercise.category.rawValue)")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
